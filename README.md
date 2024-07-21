@@ -1,6 +1,6 @@
-# selenium_BDD_framework
+**Automation for Git Lab Signup Page**
 
-Behavioural driven development automation framework using selenium, cucumber-java, testng, maven
+Behavioural driven development automation framework (BDD) using selenium, cucumber-java, testng, maven
 
 
 ## Tools and technologies used:
