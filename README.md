@@ -35,8 +35,8 @@ Once test execution is completed, go to target/cucumber-reports.html and open it
 
 
 You can see the test results at different level
+<img width="1424" alt="Screenshot 2024-07-22 at 2 02 13 AM" src="https://github.com/user-attachments/assets/8f8178ef-a161-431b-8fa9-d3bba433899f">
 
-![Screenshot 2024-07-20 at 2.22.46 PM.png](..%2F..%2F..%2Fvar%2Ffolders%2Fkt%2Fg39jtxm50bs2bntsv_tc6njr0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_lB81p6%2FScreenshot%202024-07-20%20at%202.22.46%E2%80%AFPM.png)
 
 # Setting up the project
 
