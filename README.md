@@ -20,8 +20,7 @@ Behavioural driven development automation framework using selenium, cucumber-jav
 4. Page Object Model also applied in this framework
 
 **package: features** : It contains all different features (tests) files.
-![Screenshot 2023-03-29 at 10.27.13 PM.png](images%2FScreenshot%202023-03-29%20at%2010.27.13%20PM.png)
-
+![Screenshot 2024-07-20 at 2.20.40 PM.png](..%2F..%2F..%2Fvar%2Ffolders%2Fkt%2Fg39jtxm50bs2bntsv_tc6njr0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_8eEb3y%2FScreenshot%202024-07-20%20at%202.20.40%E2%80%AFPM.png)
 
 **package: framework** : It includes the Step definitions classes(Testcase methods) Page (Page object model and methods) which are required by each test to perform actions. Below are classes in this package:
 
@@ -36,30 +35,18 @@ Once test execution is completed, go to target/cucumber-reports.html and open it
 
 
 You can see the test results at different level
-![Screenshot 2023-03-29 at 10.45.39 PM.png](images%2FScreenshot%202023-03-29%20at%2010.45.39%20PM.png)
 
+![Screenshot 2024-07-20 at 2.22.46 PM.png](..%2F..%2F..%2Fvar%2Ffolders%2Fkt%2Fg39jtxm50bs2bntsv_tc6njr0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_lB81p6%2FScreenshot%202024-07-20%20at%202.22.46%E2%80%AFPM.png)
 
 # Setting up the project
 
 Install the java and maven and clone the build then:
 
-**$ cd Selenium-java-bdd-framework**
+**$ cd Automation_test_signUp_flows**
 
 **$ mvn clean install**
 
 
 
 ## Execution of tests
-There are 2 scenarios named as @ValidCredentials,FilterProduct and @AddToCart Ran the tests on browser
-
-To run scenarios (@ValidCredentials,@AddToCart,@FilterProduct)
-
 **$ mvn test**
-
-To run specific scenario:
-
-**$ mvn test -Dcucumber.options="--tags @AddToCart"**
-
-To run multiple mentioned scenarios:
-
-**$ mvn test -Dcucumber.options="--tags @ValidCredentials,@AddToCart"**

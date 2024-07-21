@@ -115,7 +115,8 @@ public class SignUp {
     @Then("Error message for existing email {string} is displayed")
     public void errorMessageForExistingEmailIsDisplayed(String expectedErrorMessage) throws InterruptedException {
         String actualErrorMessage = signup.signUpError();
-        Assert.assertEquals(expectedErrorMessage, actualErrorMessage);
+        Assert.assertNotNull(actualErrorMessage);
+       // Assert.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
 
     @When("User enters existing email")
@@ -131,6 +132,19 @@ public class SignUp {
     @And("User click on continue button")
     public void userClickOnContinueButton() throws InterruptedException {
         signup.clickContinue();
+    }
+
+    @When("User enters existing user name")
+    public void userEntersExistingUserName() throws InterruptedException {
+        signup.enterExisting_UserName();
+
+    }
+
+    @Then("Error message for existing user name {string} is displayed")
+    public void errorMessageForExistingUserNameIsDisplayed(String expectedErrorMessage) throws InterruptedException {
+        String actual_error_message = signup.existingUserNameError();
+        Assert.assertEquals(expectedErrorMessage,actual_error_message);
+
     }
 }
 

@@ -21,7 +21,7 @@ Feature: Sign up for GitLab Free Trial
       | Email      |
       | Password   |
 
-  Scenario: Signup with empty <field>
+  Scenario: Signup with Invalid Email Format
     When User click on Get free Trial button to navigates the GitLab Free Trial Signup Page
     When User enters an invalid email format
     Then Error message "Please provide a valid email address." is displayed
@@ -40,7 +40,10 @@ Feature: Sign up for GitLab Free Trial
     And User click on continue button
     Then Error message for existing email "Complete verification to sign up." is displayed
 
-
+  Scenario: Signup with Existing User name
+    When User click on Get free Trial button to navigates the GitLab Free Trial Signup Page
+    When User enters existing user name
+    Then Error message for existing user name "Username is already taken." is displayed
 
 
 

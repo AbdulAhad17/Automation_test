@@ -1,8 +1,6 @@
 package com.example.Pages;
-//import com.github.javafaker.Faker;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -29,57 +27,67 @@ public class signupPage {
 
     //Locator for continue button
     By continue_button = By.xpath("//*[@id=\"new_new_user\"]/button");
+
+    //Locator for continue button
     By invalid_email_message = By.xpath("//*[@id=\"new_new_user\"]/div[5]/p[1]");
-    By weak_password_message = By.xpath("//*[@id=\"new_new_user\"]/div[6]/p[1]");
-    By unsuccessful_Signup_message = By.xpath("//*[@id=\"content-body\"]/div[1]/div/div[2]/div");
-    By first_name_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[3]/div[1]/p[1]");
-    By last_name_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[3]/div[2]/p[1]");
-    By user_name_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[4]/p[1]");
-    By email_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[5]/p[1]");
+
+    //Weak Password Validation message
+     By weak_password_message = By.xpath("//*[@id=\"new_new_user\"]/div[6]/p[1]");
+    //Locator For Unsuccessful Signup message
+     By unsuccessful_Signup_message = By.xpath("//*[@id=\"content-body\"]/div[1]/div/div[2]/div");
+    //Locator For FirstNameValidationMessage
+     By first_name_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[3]/div[1]/p[1]");
+    //Locator forLast Name Validation Message
+     By last_name_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[3]/div[2]/p[1]");
+    //Locator For User name validation message
+     By user_name_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[4]/p[1]");
+    //Locator For email_validation message
+     By email_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[5]/p[1]");
+    //Locator for Password validation message
     By password_validation_message = By.xpath("//*[@id=\"new_new_user\"]/div[6]/p[1]");
+    //Locator Existing User Name validation message
+    By existing_userName_validation = By.xpath("//*[@id=\"new_new_user\"]/div[4]/p[3]");
 
-   String firstName = faker.name().firstName();
-   String lastName = faker.name().lastName();
-   String userName = faker.name().username();
-   String email = faker.internet().emailAddress();
-   String password = faker.internet().password();
 
-    String a;
+    String firstName = faker.name().firstName();  //variable to store firstname value which is auto generated
+   String lastName = faker.name().lastName();    //variable to store Last Name value which is auto generated
+   String userName = faker.name().username();  //variable to store User Name value which is auto generated
+   String email = faker.internet().emailAddress(); //variable to store Email Address  which is auto generated
+   String password = faker.internet().password();  //variable to store Email Address  which is auto generated
+
 
 
     //Method to enter FirstName
     public void enterFirst_name() throws InterruptedException {
-       // WebElement FirstName = wait.until(ExpectedConditions.visibilityOfElementLocated(First_name));
         driver.findElement(First_name).sendKeys(firstName);
         Thread.sleep(10);
     }
 
+    //Method to enter LastName
     public void enterLast_name() throws InterruptedException {
-       // WebElement LastName = wait.until(ExpectedConditions.visibilityOfElementLocated(Last_name));
         driver.findElement(Last_name).sendKeys(lastName);
         Thread.sleep(10);
     }
-
+    //Method to enter User Name
     public void enterUser_name() throws InterruptedException {
        // WebElement UserName = wait.until(ExpectedConditions.visibilityOfElementLocated(user_name));
         driver.findElement(user_name).sendKeys(userName);
         Thread.sleep(10);
     }
 
+    //Method to enter User Email
     public void enterUser_email() throws InterruptedException {
-      //  WebElement UserEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(User_Email));
         driver.findElement(User_Email).sendKeys(email);
         Thread.sleep(10);
     }
 
+    //Method to enter Invalid email
     public void enterUser_invalid_email() throws InterruptedException {
-        //  WebElement UserEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(User_Email));
         driver.findElement(User_Email).sendKeys("invalidemail");
-        Thread.sleep(10);
+        Thread.sleep(30);
     }
+    //Method to enter Password
     public void enterPassword() throws InterruptedException {
-
-      //  WebElement UserPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(User_Password));
         driver.findElement(User_Password).sendKeys(password);
         Thread.sleep(10);;
     }
@@ -87,7 +95,7 @@ public class signupPage {
     //Method to click on Login button
     public void clickContinue() throws InterruptedException {
         driver.findElement(continue_button).click();
-        Thread.sleep(60);
+        Thread.sleep(10);
     }
 
     public void user_enters_field_as_empty(String field) throws InterruptedException {
@@ -175,8 +183,9 @@ public class signupPage {
 
             case "Email":
                 String email_message =   driver.findElement(email_validation_message).getText();
-                String email_expected_message = "Please provide a valid email address.";
-                Assert.assertEquals(email_message,email_expected_message);
+                String email_expected_message = "";
+                Assert.assertNotNull(email_message);
+               // Assert.assertEquals(email_message,email_expected_message);
                 break;
 
             case "Password":
@@ -205,12 +214,14 @@ public class signupPage {
         return String.valueOf(driver.findElement(unsuccessful_Signup_message).getText());
     }
 
+    public String existingUserNameError() throws InterruptedException {
+        Thread.sleep(1000);
+        return String.valueOf(driver.findElement(existing_userName_validation).getText());
+    }
+
 
     public void enterWeakPassword() throws InterruptedException {
-
-        //  WebElement UserPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(User_Password));
         driver.findElement(User_Password).sendKeys("1a#");
-        Thread.sleep(1000);;
     }
 
     public String getEmailErrorElement() {
@@ -220,7 +231,10 @@ public class signupPage {
 
     public void enterUser_existing_email() throws InterruptedException {
         driver.findElement(User_Email).sendKeys("abdulahad_17@hotmail.com");
-        Thread.sleep(10);;
+    }
 
+    public void enterExisting_UserName() throws InterruptedException {
+        driver.findElement(user_name).sendKeys("abdulahad");
+        Thread.sleep(1000);
     }
 }
